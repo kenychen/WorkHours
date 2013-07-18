@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <!--<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>         -->
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.4.0.js"></script>
+    <script type="text/javascript" src="bootstrap/js/unique.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+</head>
+<body ng-app>
+    <div ng-controller="pList">
+        <label >專案：</label><select ng-model="selected_pname"
+                ng-options="project.pname for project in projects">
+            <option value="">選擇專案</option>
+                </select>
+        <br>
+        <label >專案屬性：</label><select ng-model="selected_ptype"
+                                   ng-options="project.ptype for project in projects|filter:selected_pname">
+        <option value="">選擇屬性</option>
+    </select>
+        <br>
+        <label >工作項目：</label><select ng-model="selected_task"
+                                     ng-options="project.task for project in projects|filter:selected_ptype">
+        <option value="">選擇工作項目</option>
+    </select>
+
+
+    </div>
+
+</body>
+<script type="text/javascript">
+ var pList = function($scope){
+   $scope.projects = [
+       {pname:'觀測站11',ptype:'專案性工作',task:'系統更新維護'},
+       {pname:'台中防災',ptype:'專案性工作',task:'研擬作業'},
+       {pname:'結構補強',ptype:'專案性工作',task:'專案管理'},
+       {pname:'觀測站11',ptype:'支援性工作',task:'觀測站資料分析'},
+       {pname:'觀測站11',ptype:'支援性工作',task:'報告書撰寫'},
+       {pname:'結構補強',ptype:'經常性工作',task:'系統更新維護'},
+       {pname:'結構補強',ptype:'支援性工作',task:'報告書撰寫'}
+
+   ];
+ }
+</script>
+</html>
